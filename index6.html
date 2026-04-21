@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fine Dining - Royal Egypt Restaurants</title>
+    <!-- استيراد الخطوط الفاخرة -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root { 
+            --luxury-gold: #D4AF37; 
+            --creamy-white: #FDFBF7; 
+            --deep-bronze: #5C430D; 
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--creamy-white);
+            color: var(--deep-bronze);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: white;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--deep-bronze); }
+        .logo-img { width: clamp(35px, 4vw, 45px); }
+        .main-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 800; }
+
+        /* Main Section */
+        .restaurants-section { padding: 60px 5%; max-width: 1600px; margin: 0 auto; }
+        
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 10px; }
+        .section-subtitle { text-transform: uppercase; letter-spacing: 4px; color: var(--luxury-gold); font-weight: 600; font-size: 0.8rem; }
+
+        /* Restaurants Grid - 4 Columns */
+        .restaurants-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr); 
+            gap: 25px;
+        }
+
+        /* تأثيرات الكارت */
+        .restaurant-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.4s ease; /* سرعة الحركة */
+            border: 1px solid rgba(212, 175, 55, 0.1);
+        }
+
+        /* رفع الكارت وتغيير الظل عند الـ Hover */
+        .restaurant-card:hover {
+            transform: translateY(-15px);
+            border-color: var(--luxury-gold);
+            box-shadow: 0 20px 40px rgba(212, 175, 55, 0.2);
+        }
+
+        .res-img-box {
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* تأثير تكبير الصورة */
+        .res-img-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s ease;
+        }
+
+        .restaurant-card:hover .res-img-box img {
+            transform: scale(1.15); /* تكبير الصورة 15% */
+        }
+
+        .res-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--luxury-gold);
+            color: white;
+            padding: 5px 12px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            border-radius: 20px;
+            text-transform: uppercase;
+            z-index: 2;
+        }
+
+        .res-body { padding: 25px; text-align: center; }
+        .res-body h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 8px; }
+        .res-body p { font-size: 0.85rem; color: #666; margin-bottom: 20px; line-height: 1.5; height: 40px; overflow: hidden;}
+
+        .res-meta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 0.75rem;
+            color: var(--luxury-gold);
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        /* تأثير الزر */
+        .reserve-btn {
+            display: inline-block;
+            padding: 10px 25px;
+            border: 1px solid var(--luxury-gold);
+            color: var(--luxury-gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            border-radius: 25px;
+            transition: 0.3s ease;
+        }
+
+        .reserve-btn:hover {
+            background: var(--luxury-gold);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) { .restaurants-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 650px) { 
+            .restaurants-grid { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo-container">
+            <img src="9dbc8c655cd2237b504f8b5298d1c93d.png" alt="Logo" class="logo-img">
+            <div class="main-logo">Visit Cairo</div>
+        </a>
+        <a href="/" style="color: var(--deep-bronze); text-decoration: none; font-weight: 600;">Back to Home</a>
+    </header>
+
+    <main class="restaurants-section">
+        <div class="section-header">
+            <h1 class="section-title">Authentic Flavors</h1>
+            <p class="section-subtitle">A Gastronomic Journey Across Cairo</p>
+        </div>
+        
+        <div class="restaurants-grid">
+            <!-- Restaurant 1 -->
+            <div class="restaurant-card">
+                <div class="res-img-box">
+                    <span class="res-badge">Top Rated</span>
+                    <img src="804368976.jpg" alt="Restaurant">
+                </div>
+                <div class="res-body">
+                    <h3>The Nile Grill</h3>
+                    <div class="res-meta"><span>Oriental</span> • <span>⭐⭐⭐⭐⭐</span></div>
+                    <p>Authentic Egyptian flavors with a breathtaking view.</p>
+                    <a href="index5.html" class="reserve-btn">Book a Table</a>
+                </div>
+            </div>
+
+            <!-- Restaurant 2 -->
+            <div class="restaurant-card">
+                <div class="res-img-box">
+                    <img src="a-beautiful-dinner-view.jpg" alt="Restaurant">
+                </div>
+                <div class="res-body">
+                    <h3>Pyramid Sky</h3>
+                    <div class="res-meta"><span>Fine Dining</span> • <span>⭐⭐⭐⭐⭐</span></div>
+                    <p>International cuisine overlooking the Giza Pyramids.</p>
+                    <a href="index5.html" class="reserve-btn">Book a Table</a>
+                </div>
+            </div>
+
+            <!-- Restaurant 3 -->
+            <div class="restaurant-card">
+                <div class="res-img-box">
+                    <span class="res-badge">New</span>
+                    <img src="ChatGPT Image 21 أبريل 2026، 12_14_46 ص.png" alt="Restaurant">
+                </div>
+                <div class="res-body">
+                    <h3>Khan El-Khalili</h3>
+                    <div class="res-meta"><span>Traditional</span> • <span>⭐⭐⭐⭐</span></div>
+                    <p>Traditional dishes and aromatic coffee.</p>
+                    <a href="index5.html" class="reserve-btn">Book a Table</a>
+                </div>
+            </div>
+
+            <!-- Restaurant 4 -->
+            <div class="restaurant-card">
+                <div class="res-img-box">
+                    <img src="ChatGPT Image 21 أبريل 2026، 12_19_32 ص.png" alt="Restaurant">
+                </div>
+                <div class="res-body">
+                    <h3>Pharaoh Lounge</h3>
+                    <div class="res-meta"><span>Luxury</span> • <span>⭐⭐⭐⭐⭐</span></div>
+                    <p>Exquisite seafood in a royal atmosphere.</p>
+                    <a href="index5.html" class="reserve-btn">Book a Table</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

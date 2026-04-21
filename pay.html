@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Payment - Royal Egypt</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root { 
+            --luxury-gold: #D4AF37; 
+            --creamy-white: #FDFBF7; 
+            --deep-bronze: #5C430D; 
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--creamy-white);
+            color: var(--deep-bronze);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .pay-card {
+            background: white;
+            width: 100%;
+            max-width: 450px;
+            padding: 40px;
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            text-align: center;
+        }
+
+        .pay-card h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .pay-card p {
+            font-size: 0.85rem;
+            color: #777;
+            margin-bottom: 25px;
+        }
+
+        .payment-form {
+            display: grid;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            color: var(--luxury-gold);
+            letter-spacing: 1px;
+        }
+
+        input {
+            padding: 12px 15px;
+            border: 1px solid #E0E0E0;
+            border-radius: 10px;
+            background: #FAFAFA;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--luxury-gold);
+            background: white;
+        }
+
+        .card-meta {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .pay-now-btn {
+            background: var(--luxury-gold);
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 10px;
+            font-size: 0.9rem;
+        }
+
+        .pay-now-btn:hover {
+            background: var(--deep-bronze);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .security-icons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="pay-card">
+        <h1>Secure Payment</h1>
+        <p>Your booking is held. Please pay to confirm.</p>
+
+        <!-- الفورم بيبعت البيانات للـ complete-payment في السيرفر -->
+        <form class="payment-form" action="/complete-payment" method="POST">
+            
+            <!-- حقل مخفي لتخزين رقم الحجز القادم من الرابط -->
+            <input type="hidden" name="bookingId" id="bookingIdField">
+
+            <div class="input-group">
+                <label>Cardholder Name</label>
+                <input type="text" placeholder="Name on card" required>
+            </div>
+
+            <div class="input-group">
+                <label>Card Number</label>
+                <input type="text" placeholder="**** **** **** ****" required>
+            </div>
+
+            <div class="card-meta">
+                <div class="input-group">
+                    <label>Expiry Date</label>
+                    <input type="text" placeholder="MM/YY" required>
+                </div>
+                <div class="input-group">
+                    <label>CVV</label>
+                    <input type="password" placeholder="***" required>
+                </div>
+            </div>
+
+            <button type="submit" class="pay-now-btn">Pay Now & Confirm</button>
+        </form>
+
+        <div class="security-icons">
+            <span>🛡️ SSL Secure Payment</span>
+            <span>💳 Cards Accepted</span>
+        </div>
+    </div>
+
+    <script>
+        // كود برمجي بيسحب الـ ID من عنوان الصفحة ويحطه في الفورم تلقائياً
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
+            if(id) {
+                document.getElementById('bookingIdField').value = id;
+            }
+        }
+    </script>
+
+</body>
+</html>

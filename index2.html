@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Egypt - Luxury Destinations</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root { --luxury-gold: #D4AF37; --creamy-white: #FDFBF7; --deep-bronze: #5C430D; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--creamy-white); color: var(--deep-bronze); overflow-x: hidden; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: white; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--deep-bronze); }
+        .logo-img { width: 45px; height: auto; }
+        .main-logo { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 800; }
+        .explore-section { padding: 60px 5%; max-width: 1800px; margin: 0 auto; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); text-align: center; margin-bottom: 50px; }
+        .destinations-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+        .dest-card { position: relative; height: 500px; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 25px rgba(0,0,0,0.1); transition: 0.4s; }
+        .dest-card:hover { transform: translateY(-10px); }
+        .dest-card img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s; }
+        .dest-card:hover img { transform: scale(1.1); }
+        .card-overlay { position: absolute; bottom: 0; left: 0; width: 100%; height: 50%; background: linear-gradient(to top, rgba(92, 67, 13, 0.9), transparent); display: flex; flex-direction: column; justify-content: flex-end; padding: 20px; color: white; }
+        .back-home { display: inline-block; margin-top: 40px; color: var(--deep-bronze); text-decoration: none; font-weight: 600; border-bottom: 2px solid var(--luxury-gold); }
+        @media (max-width: 1024px) { .destinations-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 600px) { .destinations-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo-container">
+            <img src="9dbc8c655cd2237b504f8b5298d1c93d.png" alt="Logo" class="logo-img">
+            <div class="main-logo">Visit Cairo</div>
+        </a>
+        <a href="/" class="back-home">← Back to Home</a>
+    </header>
+    <main class="explore-section">
+        <h1 class="section-title">Royal Destinations</h1>
+        <div class="destinations-grid">
+            <div class="dest-card"><img src="ChatGPT Image 21 أبريل 2026، 12_21_20 ص.png"><div class="card-overlay"><h3>Giza Pyramids</h3><p>Ancient Majesty</p></div></div>
+            <div class="dest-card"><img src="ChatGPT Image 21 أبريل 2026، 12_16_44 ص.png"><div class="card-overlay"><h3>Red Sea</h3><p>Crystal Waters</p></div></div>
+            <div class="dest-card"><img src="ChatGPT Image 21 أبريل 2026، 12_14_46 ص.png"><div class="card-overlay"><h3>Karnak Temple</h3><p>Luxor Heritage</p></div></div>
+            <div class="dest-card"><img src="ChatGPT Image 21 أبريل 2026، 12_19_32 ص.png"><div class="card-overlay"><h3>The Nile</h3><p>Eternal River</p></div></div>
+        </div>
+    </main>
+</body>
+</html>

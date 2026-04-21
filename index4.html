@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan Your Trip - Royal Egypt</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root { 
+            --luxury-gold: #D4AF37; 
+            --creamy-white: #FDFBF7; 
+            --deep-bronze: #5C430D; 
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--creamy-white);
+            color: var(--deep-bronze);
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: white;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--deep-bronze); }
+        .logo-img { width: clamp(35px, 4vw, 45px); }
+        .main-logo { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 800; }
+
+        /* Planning Section */
+        .planning-section { padding: 60px 5%; max-width: 1000px; margin: 0 auto; }
+        
+        .section-header { text-align: center; margin-bottom: 50px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 4rem); margin-bottom: 10px; }
+        .section-subtitle { text-transform: uppercase; letter-spacing: 4px; color: var(--luxury-gold); font-weight: 600; font-size: 0.8rem; }
+
+        /* Planning Form */
+        .plan-form {
+            background: white;
+            padding: clamp(30px, 5vw, 60px);
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+
+        .input-group { display: flex; flex-direction: column; gap: 10px; }
+
+        label { font-size: 0.9rem; font-weight: 600; color: var(--luxury-gold); text-transform: uppercase; }
+
+        input, select, textarea {
+            padding: 15px;
+            border: 1px solid #E0E0E0;
+            border-radius: 12px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            background: #FAFAFA;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--luxury-gold);
+            background: white;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .full-width { grid-column: span 2; }
+
+        .submit-btn {
+            background: var(--luxury-gold);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            background: var(--deep-bronze);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+            header { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo-container">
+            <img src="9dbc8c655cd2237b504f8b5298d1c93d.png" alt="Logo" class="logo-img">
+            <div class="main-logo">Visit Cairo</div>
+        </a>
+        <a href="/" style="color: var(--deep-bronze); text-decoration: none; font-weight: 600;">Back to Home</a>
+    </header>
+
+    <main class="planning-section">
+        <div class="section-header">
+            <h1 class="section-title">Plan Your Journey</h1>
+            <p class="section-subtitle">Craft your bespoke Egyptian escape</p>
+        </div>
+
+        <!-- تم تحديث الفورم للإرسال للمسار /plan -->
+        <form class="plan-form" action="/plan" method="POST">
+            <div class="form-grid">
+                <div class="input-group">
+                    <label>Full Name</label>
+                    <input type="text" name="fullName" placeholder="Enter your name" required>
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="example@mail.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Preferred Destination</label>
+                    <select name="destination">
+                        <option>Cairo & Pyramids</option>
+                        <option>Luxor & Nile Cruise</option>
+                        <option>Red Sea Riviera</option>
+                        <option>Alexandria</option>
+                    </select>
+                </div>
+                <div class="input-group">
+                    <label>Travel Date</label>
+                    <input type="date" name="travelDate">
+                </div>
+                <div class="input-group full-width">
+                    <label>Special Requests</label>
+                    <textarea name="requests" rows="4" placeholder="How can we make your trip unforgettable?"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="submit-btn">Send My Itinerary →</button>
+        </form>
+    </main>
+
+</body>
+</html>

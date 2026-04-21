@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Things to Do - Luxury Experiences</title>
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root { --luxury-gold: #D4AF37; --creamy-white: #FDFBF7; --deep-bronze: #5C430D; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--creamy-white); color: var(--deep-bronze); overflow-x: hidden; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 20px 5%; background: white; box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1); position: sticky; top: 0; z-index: 1000; }
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--deep-bronze); }
+        .logo-img { width: clamp(35px, 4vw, 45px); }
+        .main-logo { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 800; }
+        .activities-section { padding: 60px 5%; max-width: 1600px; margin: 0 auto; }
+        .section-header { text-align: center; margin-bottom: 60px; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 5vw, 4rem); }
+        .activities-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; }
+        .activity-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.05); transition: 0.4s; border: 1px solid transparent; }
+        .activity-card:hover { transform: translateY(-10px); border-color: var(--luxury-gold); }
+        .card-img-box { width: 100%; height: 250px; overflow: hidden; }
+        .card-img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
+        .activity-card:hover .card-img-box img { transform: scale(1.1); }
+        .card-body { padding: 25px; text-align: center; }
+        .explore-btn { color: var(--luxury-gold); text-decoration: none; font-weight: 600; border-bottom: 1px solid var(--luxury-gold); }
+        @media (max-width: 1200px) { .activities-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 650px) { .activities-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/" class="logo-container">
+            <img src="9dbc8c655cd2237b504f8b5298d1c93d.png" alt="Logo" class="logo-img">
+            <div class="main-logo">Visit Cairo</div>
+        </a>
+        <a href="/" style="color: var(--deep-bronze); text-decoration: none; font-weight: 600;">Home</a>
+    </header>
+    <main class="activities-section">
+        <div class="section-header"><h1 class="section-title">Royal Activities</h1></div>
+        <div class="activities-grid">
+            <div class="activity-card"><div class="card-img-box"><img src="a-beautiful-dinner-view.jpg"></div><div class="card-body"><h3>Heritage Tours</h3><p>Guided private tours.</p><a href="#" class="explore-btn">Discover More</a></div></div>
+            <div class="activity-card"><div class="card-img-box"><img src="ChatGPT Image 21 أبريل 2026، 12_19_32 ص.png"></div><div class="card-body"><h3>Nile Felucca</h3><p>Serene private rides.</p><a href="#" class="explore-btn">Book Now</a></div></div>
+            <div class="activity-card"><div class="card-img-box"><img src="804368976.jpg"></div><div class="card-body"><h3>Fine Dining</h3><p>Authentic cuisine.</p><a href="#" class="explore-btn">View Menu</a></div></div>
+            <div class="activity-card"><div class="card-img-box"><img src="ChatGPT Image 21 أبريل 2026، 12_21_20 ص.png"></div><div class="card-body"><h3>Desert Safari</h3><p>Venture into Sahara.</p><a href="#" class="explore-btn">Learn More</a></div></div>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visit Cairo - Official Tourism Portal</title>
+    <!-- استيراد الخطوط الفخمة -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary-yellow: #E8B931;
+            --luxury-gold: #D4AF37;
+            --deep-bronze: #5C430D;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.4)), 
+                        url('ChatGPT Image 21 أبريل 2026، 12_21_20 ص.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px; 
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: white;
+        }
+        .logo-container:hover { transform: scale(1.05); }
+
+        .logo-img { width: clamp(40px, 5vw, 55px); height: auto; }
+
+        .logo-text .main-logo {
+            font-size: clamp(1.5rem, 3vw, 2.2rem);
+            font-weight: 800;
+            font-family: 'Playfair Display', serif;
+            line-height: 1;
+        }
+
+        .logo-text .sub-logo {
+            display: block;
+            font-size: clamp(8px, 1vw, 10px);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary-yellow);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: clamp(10px, 2vw, 25px);
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: clamp(11px, 1.2vw, 14px);
+            transition: all 0.3s ease;
+        }
+        
+        nav ul li a:hover { color: var(--primary-yellow); transform: scale(1.1); }
+
+        .start-btn {
+            background: var(--primary-yellow);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(11px, 1.2vw, 13px);
+            transition: 0.3s;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px 8%;
+            max-width: 1000px;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5.5rem);
+            line-height: 1.1;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 15px rgba(0,0,0,0.6);
+        }
+
+        .hero-content p {
+            font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+            margin-bottom: 35px;
+            max-width: 500px;
+        }
+
+        .cta-group { display: flex; gap: 15px; flex-wrap: wrap; }
+
+        .btn {
+            padding: clamp(10px, 1.5vw, 14px) clamp(20px, 3vw, 35px);
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(12px, 1.2vw, 14px);
+            transition: 0.3s;
+        }
+
+        .btn-yellow { background: var(--primary-yellow); color: black; }
+        .btn-outline { border: 1.5px solid white; color: white; backdrop-filter: blur(5px); }
+        .btn:hover { transform: scale(1.05); background: white; color: black; }
+
+        .popular-box {
+            position: absolute;
+            bottom: 30px;
+            right: 5%;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            padding: 15px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.1);
+            max-width: 320px;
+        }
+
+        .cards-flex { display: flex; gap: 10px; margin-top: 10px; }
+        .card { width: 80px; text-align: center; cursor: pointer; transition: 0.3s; }
+        .card:hover { transform: scale(1.1); }
+        .card img { width: 100%; height: 80px; border-radius: 10px; object-fit: cover; margin-bottom: 5px; }
+        .card span { font-size: 9px; font-weight: 600; display: block; }
+
+        /* --- Footer Section --- */
+        .site-footer {
+            background-color: #0b0b0b;
+            color: #fff;
+            padding: 60px 5% 20px;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-column h3 {
+            color: var(--luxury-gold);
+            font-size: 1rem;
+            margin-bottom: 25px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 12px; }
+        .footer-column ul li a { color: #ccc; text-decoration: none; font-size: 0.85rem; transition: 0.3s; }
+        .footer-column ul li a:hover { color: var(--luxury-gold); padding-left: 5px; }
+
+        .footer-bottom {
+            margin-top: 50px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            font-size: 0.75rem;
+            color: #777;
+            text-align: center;
+        }
+
+        .powered-by {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--luxury-gold);
+            letter-spacing: 1px;
+        }
+        .powered-by strong { color: #fff; }
+
+        @media (max-width: 768px) {
+            .hero-content { align-items: center; text-align: center; }
+            .popular-box { position: relative; right: auto; margin: 20px auto; width: 90%; }
+            .footer-container { text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+<section class="hero">
+    <header>
+        <a href="/" class="logo-container">
+            <img src="9dbc8c655cd2237b504f8b5298d1c93d.png" alt="Logo" class="logo-img">
+            <div class="logo-text">
+                <div class="main-logo">Visit Cairo</div>
+                <span class="sub-logo">Official Tourism Portal</span>
+            </div>
+        </a>
+
+        <nav>
+            <ul>
+                <li><a href="index2.html">Explore Egypt</a></li>
+                <li><a href="index3.html">Things to Do</a></li>
+                <li><a href="index5.html">Book Now</a></li>
+                <li><a href="index6.html">Restaurants</a></li>
+            </ul>
+        </nav>
+
+        <div class="nav-right">
+            <a href="index5.html" class="start-btn">Book Now →</a>
+        </div>
+    </header>
+
+    <div class="hero-content">
+        <h1>Experience <br> Egypt <br> Like Never <br> Before</h1>
+        <p>Discover 7,000 years of history, luxury resorts, and unforgettable adventures.</p>
+        <div class="cta-group">
+            <a href="index5.html" class="btn btn-yellow">Book Your Stay →</a>
+            <a href="index2.html" class="btn btn-outline">Explore Destinations</a>
+        </div>
+    </div>
+
+    <div class="popular-box">
+        <p style="font-size: 10px; text-transform: uppercase; letter-spacing: 1px;">Popular Now</p>
+        <div class="cards-flex">
+            <div class="card"><img src="ChatGPT Image 21 أبريل 2026، 12_14_46 ص.png"><span>Luxor</span></div>
+            <div class="card"><img src="ChatGPT Image 21 أبريل 2026، 12_16_44 ص.png"><span>Red Sea</span></div>
+            <div class="card"><img src="ChatGPT Image 21 أبريل 2026، 12_19_32 ص.png"><span>Cairo</span></div>
+        </div>
+    </div>
+</section>
+
+<footer class="site-footer">
+    <div class="footer-container">
+        <div class="footer-column">
+            <h3>About Egypt</h3>
+            <ul>
+                <li><a href="#">Company overview</a></li>
+                <li><a href="#">Our Heritage</a></li>
+                <li><a href="#">Sustainability</a></li>
+                <li><a href="#">Contact Us</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index2.html">Explore Egypt</a></li>
+                <li><a href="index3.html">Things to Do</a></li>
+                <li><a href="index5.html">Book Your Stay</a></li>
+                <li><a href="index6.html">Fine Dining</a></li>
+            </ul>
+        </div>
+        <div class="footer-column">
+            <h3>Support</h3>
+            <ul>
+                <li><a href="#">Manage account</a></li>
+                <li><a href="#">Booking Status</a></li>
+                <li><a href="admin.html">Admin Panel</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>© 2026 Royal Egypt Tourism Inc. All rights reserved</p>
+        <div class="powered-by">
+            Powered by <strong>Mega Pro</strong>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

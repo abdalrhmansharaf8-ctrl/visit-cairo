@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Stay - Royal Egypt</title>
+    <!-- استيراد الخطوط الفاخرة -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <style>
+        :root { 
+            --luxury-gold: #D4AF37; 
+            --creamy-white: #FDFBF7; 
+            --deep-bronze: #5C430D; 
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--creamy-white);
+            color: var(--deep-bronze);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: white;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--deep-bronze); }
+        .logo-img { width: clamp(35px, 4vw, 45px); height: auto; }
+        .main-logo { font-family: 'Playfair Display', serif; font-size: clamp(1.2rem, 2vw, 1.8rem); font-weight: 800; }
+
+        /* Main Booking Section */
+        .booking-section {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 5%;
+        }
+
+        .booking-card {
+            background: white;
+            width: 100%;
+            max-width: 850px;
+            padding: clamp(30px, 5vw, 50px);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+        }
+
+        .booking-header { text-align: center; margin-bottom: 40px; }
+        .booking-header h1 { 
+            font-family: 'Playfair Display', serif; 
+            font-size: clamp(2rem, 5vw, 3rem); 
+            margin-bottom: 10px; 
+        }
+        .booking-header p { 
+            color: var(--luxury-gold); 
+            letter-spacing: 3px; 
+            text-transform: uppercase; 
+            font-size: 0.8rem; 
+            font-weight: 600; 
+        }
+
+        /* Form Styling */
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            text-align: left;
+        }
+
+        .input-box { display: flex; flex-direction: column; gap: 8px; }
+        .full-width { grid-column: span 2; }
+
+        label { 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            color: var(--luxury-gold); 
+            letter-spacing: 1px;
+        }
+        
+        input, select {
+            padding: 12px 15px;
+            border: 1px solid #E0E0E0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 0.95rem;
+            background: #FAFAFA;
+            transition: 0.3s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--luxury-gold);
+            background: white;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .book-btn {
+            grid-column: span 2;
+            background: var(--luxury-gold);
+            color: white;
+            padding: 18px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.4s;
+            margin-top: 15px;
+            font-size: 1rem;
+        }
+
+        .book-btn:hover {
+            background: var(--deep-bronze);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .booking-form { grid-template-columns: 1fr; }
+            .full-width, .book-btn { grid-column: span 1; }
+            header { flex-direction: column; gap: 15px; padding: 15px 5%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="/" class="logo-container">
+            <!-- تأكد من وجود ملف اللوجو في المجلد -->
+            <img src="9dbc8c655cd2237b504f8b5298d1c93d.png" alt="Logo" class="logo-img">
+            <div class="main-logo">Visit Cairo</div>
+        </a>
+        <nav>
+            <a href="/" style="color: var(--deep-bronze); text-decoration: none; font-weight: 600; font-size: 14px;">Home</a>
+        </nav>
+    </header>
+
+    <main class="booking-section">
+        <div class="booking-card">
+            <div class="booking-header">
+                <p>Private Reservation</p>
+                <h1>Complete Your Booking</h1>
+            </div>
+
+            <form class="booking-form" action="/book" method="POST">
+                <!-- الاسم بالكامل -->
+                <div class="input-box full-width">
+                    <label>Full Name</label>
+                    <input type="text" name="fullName" placeholder="Enter your full name" required>
+                </div>
+
+                <!-- الإيميل -->
+                <div class="input-box">
+                    <label>Email Address</label>
+                    <input type="email" name="email" placeholder="example@mail.com" required>
+                </div>
+
+                <!-- السن -->
+                <div class="input-box">
+                    <label>Age</label>
+                    <input type="number" name="age" placeholder="Ex: 25" required>
+                </div>
+
+                <!-- رقم الهاتف مع كود الدولة -->
+                <div class="input-box full-width">
+                    <label>Phone Number (with Country Code)</label>
+                    <input type="tel" name="phone" placeholder="+20 123 456 7890" required>
+                </div>
+
+                <!-- اختيار الفندق -->
+                <div class="input-box full-width">
+                    <label>Select Hotel or Resort</label>
+                    <select name="hotel" required>
+                        <option value="Mena House">Mena House Hotel (Pyramids View)</option>
+                        <option value="Nile Ritz">The Nile Ritz-Carlton</option>
+                        <option value="Old Cataract">Old Cataract Aswan</option>
+                        <option value="Four Seasons">Four Seasons Nile Plaza</option>
+                    </select>
+                </div>
+
+                <!-- التواريخ -->
+                <div class="input-box">
+                    <label>Check In</label>
+                    <input type="date" name="checkIn" required>
+                </div>
+
+                <div class="input-box">
+                    <label>Check Out</label>
+                    <input type="date" name="checkOut" required>
+                </div>
+
+                <!-- زر الانتقال للدفع -->
+                <button type="submit" class="book-btn">Proceed to Payment →</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
